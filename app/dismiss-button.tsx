@@ -14,7 +14,7 @@ export default function DismissButton() {
         router.refresh();
       }}
     >
-      Dismiss →
+      Chiudi &#x2715;
     </button>
   );
 }

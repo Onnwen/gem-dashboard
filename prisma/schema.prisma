@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model elections {
+  id          Int      @id @default(autoincrement())
+  nation_id   Int
+  name        String   @db.VarChar(100)
+  start_date  DateTime @db.Date
+  end_date    DateTime @db.Date
+  in_progress Boolean  @default(true)
+  num_seats   Int?
+  source      String?  @db.TinyText
+}
+
+model nations {
+  id              Int     @id @default(autoincrement())
+  name            String  @db.VarChar(100)
+  italian_name    String? @db.VarChar(100)
+  utf_icon        String? @db.VarChar(8)
+  elections_count Int?
+}
+
+model parties {
+  id           Int     @id @default(autoincrement())
+  name         String  @db.VarChar(100)
+  italian_name String? @db.VarChar(100)
+  color        String  @db.VarChar(10)
+  image_url    String? @db.VarChar(250)
+  description  String? @db.Text
+}
+
+model party_elections {
+  id                Int  @id @default(autoincrement())
+  party_id          Int
+  election_id       Int
+  representative_id Int?
+}
+
+model party_name_changes {
+  id          Int      @id @default(autoincrement())
+  party_id    Int
+  old_name    String   @db.VarChar(100)
+  change_date DateTime @db.Date
+}
+
+model regions {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(100)
+}
+
+model representatives {
+  id          Int     @id @default(autoincrement())
+  first_name  String? @db.TinyText
+  last_name   String? @db.TinyText
+  image_url   String? @db.VarChar(250)
+  description String? @db.Text
+}
+
+model users {
+  id       Int     @id @default(autoincrement())
+  email    String  @db.VarChar(255)
+  name     String? @db.VarChar(255)
+  username String? @db.VarChar(255)
+}
+
+model voter_turnout {
+  id            Int @id @default(autoincrement())
+  election_id   Int
+  region_id     Int
+  total_turnout Int
+}
+
+model votes {
+  id          Int @id @default(autoincrement())
+  election_id Int
+  party_id    Int
+  region_id   Int
+  total_votes Int
+}

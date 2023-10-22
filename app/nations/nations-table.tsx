@@ -11,12 +11,6 @@ import {
 } from '@tremor/react';
 import { redirect } from 'next/navigation';
 
-interface Nation {
-  id: number;
-  name: string;
-  utf_icon: string;
-}
-
 export default function NationsTable({ nations }: { nations: Nation[] }) {
   return (
     <Table className='mt-5'>
@@ -27,11 +21,11 @@ export default function NationsTable({ nations }: { nations: Nation[] }) {
       </TableHead>
       <TableBody>
         {nations.map((item) => (
-          <a href={'/nation/' + item.id} key={item.id}>
-            <TableRow>
+          <TableRow key={item.id}>
+            <a href={'/nations/' + item.id}>
               <TableCell>{item.name} {item.utf_icon}</TableCell>
-            </TableRow>
-          </a>
+            </a>
+          </TableRow>
         ))}
       </TableBody>
     </Table>

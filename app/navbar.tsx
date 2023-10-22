@@ -6,6 +6,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { signIn, signOut } from 'next-auth/react';
 import Image from 'next/image';
+import { Title } from '@tremor/react';
 
 const navigation = [
   { name: 'Dashboard', href: '/' },
@@ -28,9 +29,7 @@ export default function Navbar({ user }: { user: any }) {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 justify-between">
               <div className="flex">
-                {/*<div className="flex flex-shrink-0 items-center">*/}
-                  {/*<Image src='/icon.webp' width={40} height={40}  alt={'GEM logo'}/>*/}
-                {/*</div>*/}
+                <Title className="pt-5">GEM</Title>
                 <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                   {navigation.map((item) => (
                     <a

@@ -17,14 +17,15 @@ model elections {
   in_progress Boolean  @default(true)
   num_seats   Int?
   source      String?  @db.TinyText
+
+  @@index([nation_id], map: "elections_nations_id_fk")
 }
 
 model nations {
-  id              Int     @id @default(autoincrement())
-  name            String  @db.VarChar(100)
-  italian_name    String? @db.VarChar(100)
-  utf_icon        String? @db.VarChar(8)
-  elections_count Int?
+  id           Int     @id @default(autoincrement())
+  name         String  @db.VarChar(100)
+  italian_name String? @db.VarChar(100)
+  utf_icon     String? @db.VarChar(8)
 }
 
 model parties {
@@ -34,6 +35,7 @@ model parties {
   color        String  @db.VarChar(10)
   image_url    String? @db.VarChar(250)
   description  String? @db.Text
+  color_name   String? @db.TinyText
 }
 
 model party_elections {
@@ -41,6 +43,10 @@ model party_elections {
   party_id          Int
   election_id       Int
   representative_id Int?
+
+  @@index([representative_id], map: "party_elections___fk")
+  @@index([election_id], map: "party_elections_elections_id_fk")
+  @@index([party_id], map: "party_elections_parties_id_fk")
 }
 
 model party_name_changes {
@@ -48,11 +54,14 @@ model party_name_changes {
   party_id    Int
   old_name    String   @db.VarChar(100)
   change_date DateTime @db.Date
+
+  @@index([party_id], map: "party_name_changes_parties_id_fk")
 }
 
 model regions {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(100)
+  id        Int     @id @default(autoincrement())
+  name      String  @db.VarChar(100)
+  full_name String? @db.TinyText
 }
 
 model representatives {
@@ -75,6 +84,9 @@ model voter_turnout {
   election_id   Int
   region_id     Int
   total_turnout Int
+
+  @@index([election_id], map: "voter_turnout_elections_id_fk")
+  @@index([region_id], map: "voter_turnout_regions_id_fk")
 }
 
 model votes {
@@ -83,4 +95,8 @@ model votes {
   party_id    Int
   region_id   Int
   total_votes Int
+
+  @@index([election_id], map: "votes_elections_id_fk")
+  @@index([party_id], map: "votes_parties_id_fk")
+  @@index([region_id], map: "votes_regions_id_fk")
 }

@@ -7,17 +7,10 @@ import {
   TableCell,
   Text, Title
 } from '@tremor/react';
+import Election from '../../../interfaces/election';
 
-interface Election {
-  id: number;
-  name: string;
-  start_date: Date;
-  end_date: Date;
-  in_progress: boolean;
-  origin: string;
-}
 
-export default async function NationElectionsTable({ elections }: { elections: Election[] }) {
+export default async function NationElectionsTable({ elections }: { elections: Election[] }, { isLoading }: { isLoading: boolean }) {
   return (
     <>
       <Table className='mt-5'>
@@ -33,12 +26,12 @@ export default async function NationElectionsTable({ elections }: { elections: E
             <TableRow key={election.name}>
               <TableCell>{election.name}</TableCell>
               <TableCell>
-                {election.start_date.toTimeString() == election.end_date.toTimeString() ?
-                  <Text>{election.start_date.toLocaleDateString()}</Text> :
-                  <Text>{election.start_date.toLocaleDateString()} &rarr; {election.end_date.toLocaleDateString()}</Text>}
+                {new Date(election.start_date).toTimeString() == new Date(election.end_date).toTimeString() ?
+                  <Text>{new Date(election.start_date).toLocaleDateString()}</Text> :
+                  <Text>{new Date(election.start_date).toLocaleDateString()} &rarr; {new Date(election.end_date).toLocaleDateString()}</Text>}
               </TableCell>
               <TableCell>
-                <Text>{election.origin}</Text>
+                <Text>{election.source}</Text>
               </TableCell>
             </TableRow>
           ))}

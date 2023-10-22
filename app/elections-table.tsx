@@ -7,15 +7,7 @@ import {
   TableCell,
   Text,
 } from '@tremor/react';
-
-interface Election {
-  id: number;
-  name: string;
-  nation: string;
-  date: string;
-  type: string;
-  origin: string;
-}
+import Election from '../interfaces/election';
 
 export default async function ElectionsTable({ elections }: { elections: Election[] }, { showNation }: { showNation: Boolean }) {
   return (
@@ -30,18 +22,18 @@ export default async function ElectionsTable({ elections }: { elections: Electio
       </TableRow>
     </TableHead>
     <TableBody>
-      {elections.map((item) => (
-        <TableRow key={item.name}>
-          {showNation ? <TableCell>{item.nation}</TableCell> : null}
-          <TableCell>{item.name}</TableCell>
+      {elections.map((election) => (
+        <TableRow key={election.name}>
+          {showNation ? <TableCell>{election.nation}</TableCell> : null}
+          <TableCell>{election.name}</TableCell>
           <TableCell>
-            <Text>{item.date}</Text>
+            <Text>{election.date}</Text>
           </TableCell>
           <TableCell>
-            <Text>{item.type}</Text>
+            <Text>{election.type}</Text>
           </TableCell>
           <TableCell>
-            <Text>{item.origin}</Text>
+            <Text>{election.origin}</Text>
           </TableCell>
         </TableRow>
       ))}

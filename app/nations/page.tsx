@@ -3,12 +3,6 @@ import NationsTable from './nations-table';
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
-interface Nation {
-  id: number;
-  name: string;
-  utf_icon: string;
-}
-
 export default async function NationsPage() {
 
   const nations = await prisma.nations.findMany()

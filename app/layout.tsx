@@ -12,20 +12,21 @@ export const metadata = {
 };
 
 export default async function RootLayout({
-  children
-}: {
+                                           children
+                                         }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full bg-gray-50">
-      <body className="h-full">
-        <Suspense>
-          <Nav />
-        </Suspense>
-        {children}
-        <Analytics />
-        <Toast />
-      </body>
+    // <html lang='it' className='h-full bg-gray-50'>
+    <html lang='it'>
+    <body>
+    {/*<Suspense>*/}
+    {/*  <Nav />*/}
+    {/*</Suspense>*/}
+    {children}
+    {/*<Analytics />*/}
+    {/*<Toast />*/}
+    </body>
     </html>
   );
 }

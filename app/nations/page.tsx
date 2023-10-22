@@ -1,7 +1,7 @@
 import { Metric, Subtitle, Card } from '@tremor/react';
 import NationsTable from './nations-table';
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+// import { PrismaClient } from './prisma/generated/clientPg'
+// const prisma = new PrismaClient()
 
 export default async function NationsPage() {
 

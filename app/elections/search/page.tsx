@@ -52,7 +52,7 @@ export default async function SearchElectionPage({
               </Card>
               <Card className='mt-6'>
                 <div>
-                  <Text className={'mb-5'}>Non è presente in lista l'elezione che cercavi?</Text>
+                  <Text className={'mb-5'}>Non è presente in lista l&apos;elezione che cercavi?</Text>
                   <a
                     className='contents underline text-blue-600'
                     href={'/elections/new'}

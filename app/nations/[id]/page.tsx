@@ -33,7 +33,7 @@ export default function NationPage({ params }: { params: { id: string } }) {
         }
         setNation(data);
       });
-  }, [nationId]);
+  }, [nation, nationId]);
 
   const [elections, setElections] = useState([]);
   useEffect(() => {

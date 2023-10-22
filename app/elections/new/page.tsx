@@ -110,14 +110,14 @@ export default function AddElectionPage() {
   return (
     <main className='p-4 md:p-10 mx-auto max-w-7xl'>
       <Metric>Aggiungi elezione</Metric>
-      <Subtitle className={'mt-1'}>Importa i dati di un'elezione passata.</Subtitle>
+      <Subtitle className={'mt-1'}>Importa i dati di un&apos;elezione passata.</Subtitle>
       <Flex className={'mt-6 gap-6'}>
         <Card>
           <Title>
             Da un file JSON
           </Title>
           <Subtitle>
-            Importa i dati di un'elezione passata a partire da un file JSON.
+            Importa i dati di un&apos;elezione passata a partire da un file JSON.
           </Subtitle>
           <Button
             icon={ClipboardDocumentIcon}
@@ -133,7 +133,7 @@ export default function AddElectionPage() {
             Manualmente
           </Title>
           <Subtitle className={'mt-1'}>
-            Inserisci manualmente i dati di un'elezione passata.
+            Inserisci manualmente i dati di un&apos;elezione passata.
           </Subtitle>
           <Button
             icon={PlusIcon}
@@ -178,7 +178,7 @@ export default function AddElectionPage() {
                         <Text>{stateVote.state_name}</Text>
                         <div className={'space-y-2 my-2'}>
                           {stateVote.parties.map((party) => (
-                            <Text>{party.party_name}: {party.count}</Text>
+                            <Text key={party.name}>{party.party_name}: {party.count}</Text>
                           ))}
                         </div>
                       </Flex>

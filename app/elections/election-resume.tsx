@@ -102,7 +102,7 @@ export default function ElectionResume({electionData}) {
         colors={electionData.candidates.map(a => a.party_color_name)}
       />
 
-      <Subtitle className={"mt-14 text-center"}>Il Blog di Dario D'Angelo {electionData.in_progress ? "• Aggiornato alle " + (new Date(electionData.last_update)).toLocaleString() : ""} • Fonte {electionData.source}</Subtitle>
+      <Subtitle className={"mt-14 text-center"}>Il Blog di Dario D&apos;Angelo {electionData.in_progress ? "• Aggiornato alle " + (new Date(electionData.last_update)).toLocaleString() : ""} • Fonte {electionData.source}</Subtitle>
     </div>
   )
 }

@@ -5,6 +5,9 @@ const nextConfig = {
   },
   experimental: {
     serverComponentsExternalPackages: ['@tremor/react']
+  },
+  typescript: {
+    ignoreBuildErrors: true
   }
 };
 

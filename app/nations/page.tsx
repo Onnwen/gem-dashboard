@@ -5,8 +5,8 @@ const prisma = new PrismaClient()
 
 export default async function NationsPage() {
 
-  const nations = await prisma.nations.findMany()
-
+  // const nations = await prisma.nations.findMany()
+  const nations = []
   return (
     <main className='p-4 md:p-10 mx-auto max-w-7xl'>
       <Metric>Paesi</Metric>

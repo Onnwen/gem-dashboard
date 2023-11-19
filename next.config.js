@@ -8,8 +8,7 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true
-  },
-  basePath: '/gem'
+  }
 };
 
 module.exports = nextConfig;

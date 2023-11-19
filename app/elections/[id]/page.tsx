@@ -23,14 +23,14 @@ export default function NationPage({ params }: { params: { id: string } }) {
 
   const [election, setElection] = useState(null);
   useEffect(() => {
-    fetch(`https://dangelodario.it/gem/api/elections/${electionId}/`)
+    fetch(`/api/elections/${electionId}/`)
       .then((res) => res.json())
       .then((data) => {
         setElection(data);
       });
 
     const interval = setInterval(() => {
-      fetch(`https://dangelodario.it/gem/api/elections/${electionId}/`)
+      fetch(`/api/elections/${electionId}/`)
         .then((res) => res.json())
         .then((data) => {
           setElection(data);

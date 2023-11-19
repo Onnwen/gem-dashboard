@@ -28,11 +28,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                                           WHERE elections.id = ${electionId}
                                           LIMIT 1;`;
 
-    if (new Date().getTime() - new Date(election[0].last_update).getTime() > 10000) {
+    if ((electionId != 9 &&  electionId != 10) && new Date().getTime() - new Date(election[0].last_update).getTime() > 10000) {
       console.log("Sending update request");
-      if (electionId != 9 || electionId != 10) {
-        axios.post(`/api/elections/${electionId}/update`)
-      }
+      axios.post(`/api/elections/${electionId}/update`)
     }
 
     const votes = await prisma.$queryRaw`SELECT p.name       as party_name,

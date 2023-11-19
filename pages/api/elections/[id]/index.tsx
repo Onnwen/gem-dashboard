@@ -30,7 +30,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     if (new Date().getTime() - new Date(election[0].last_update).getTime() > 10000) {
       console.log("Sending update request");
-      axios.post(`/api/elections/${electionId}/update`)
+      if (electionId != 9 || electionId != 10) {
+        axios.post(`/api/elections/${electionId}/update`)
+      }
     }
 
     const votes = await prisma.$queryRaw`SELECT p.name       as party_name,

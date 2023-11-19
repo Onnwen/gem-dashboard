@@ -29,6 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                                           LIMIT 1;`;
 
     if (new Date().getTime() - new Date(election[0].last_update).getTime() > 10000) {
+      console.log("Sending update request");
       axios.post(`/api/elections/${electionId}/update`)
     }
 
@@ -44,7 +45,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                                                   INNER JOIN parties p on pe.party_id = p.id
                                                   INNER JOIN votes v on p.id = v.party_id
                                                   INNER JOIN representatives r on pe.representative_id = r.id
-                                         WHERE elections.id = ${electionId}
+                                         WHERE v.election_id = ${electionId}
                                          GROUP BY p.id
                                          ORDER BY SUM(v.total_votes) DESC;`;
 
